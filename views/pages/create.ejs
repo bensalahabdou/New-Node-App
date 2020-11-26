@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("../partials/head.ejs") %>
+<body>
+    <%- include("../partials/header.ejs") %>
+    <form action="/judokas" method="POST">
+        <div class="form-group">
+          <label for="inputJudoka">Judoka Name</label>
+          <input type="text" class="form-control" id="inputJudoka" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="inputChamionship">Number of world chamionship</label>
+          <input type="number" class="form-control" id="inputChamionship" name="championnat_du_monde" required>
+        </div>
+        <div class="form-group">
+            <label for="inputOlympics">Number of olympics chamionship</label>
+            <input type="number" class="form-control" id="inputOlympics" name="olympics" required>
+          </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+   
+    <%- include("../partials/footer.ejs") %> 
+</body>
+</html>

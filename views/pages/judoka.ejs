@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("../partials/head.ejs") %>
+<body>
+    <%- include("../partials/header.ejs") %>
+    
+    <div class="card">
+        <h5 class="card-header">Judoka</h5>
+        <div class="card-body">
+          <h5 class="card-title"><%=judoka.name%></h5>
+          <p class="card-text">World Championship: <%=judoka.championnat_du_monde%> time</p>
+          <p class="card-text">olympics: <%=judoka.olympics%> time</p>
+          <a href="/judokas" class="btn btn-primary"> < Go Back</a>
+          <button type="button" class="btn btn-outline-primary" id="button" data-judoka="<%=judoka._id%>"> delete</button>
+        </div>
+      </div>
+      
+   
+    <%- include("../partials/footer.ejs") %> 
+
+    <script>
+      const deleteButton = document.querySelector('#button');
+      deleteButton.addEventListener('click', (e)=> {
+        e.preventDefault();
+        const idRemoved =deleteButton.dataset.judoka;
+        const endpoint = `/judokas/${idRemoved}`
+        fetch(endpoint,{method:'DELETE'})
+        .then(response=> response.json())
+        .then(data => {
+          window.location.href = data.redirect
+        })
+        .catch(err=>{
+          console.log(err)
+        })
+      })
+    </script>
+</body>
+</html>
